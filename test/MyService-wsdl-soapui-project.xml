@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="http://localhost:9000/services/MyService.wsdl" resourceRoot="" soapui-version="3.6.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="MyServiceBinding" type="wsdl" bindingName="{http://localhost:9000/MyService/}MyServiceBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:9000/services/MyService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:9000/services/MyService.wsdl"><con:part><con:url>http://localhost:9000/services/MyService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="MyService" targetNamespace="http://localhost:9000/MyService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:9000/MyService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost:9000/MyService/">
+      <xsd:element name="SayHelloRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SayHelloResponseResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sayByeRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sayByeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sayHello">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sayHelloResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sayHelloRequest">
+    <wsdl:part name="sayHelloRequest" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="sayHelloResponse">
+    <wsdl:part name="sayHelloResponse" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="sayByeRequest">
+    <wsdl:part name="sayByeRequest" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:message name="sayByeResponse">
+    <wsdl:part name="sayByeResponse" type="xsd:string"/>
+  </wsdl:message>
+  <wsdl:portType name="MyServicePortType">
+    <wsdl:operation name="sayHello">
+      <wsdl:input message="tns:sayHelloRequest"/>
+      <wsdl:output message="tns:sayHelloResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="sayBye">
+      <wsdl:input message="tns:sayByeRequest"/>
+      <wsdl:output message="tns:sayByeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MyServiceBinding" type="tns:MyServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sayHello">
+      <soap:operation soapAction="http://localhost:9000/MyService/sayHello"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sayBye">
+      <soap:operation soapAction="http://localhost:9000/MyService/sayBye"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MyService">
+    <wsdl:port name="MyServicePort" binding="tns:MyServiceBinding">
+      <soap:address location="http://localhost:9000/services/MyService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:9000/services/MyService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://localhost:9000/MyService/sayBye" name="sayBye" bindingOperationName="sayBye" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9000/services/MyService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sayByeRequest>?</sayByeRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:9000/MyService/sayBye"/></con:call></con:operation><con:operation isOneWay="false" action="http://localhost:9000/MyService/sayHello" name="sayHello" bindingOperationName="sayHello" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9000/services/MyService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sayHelloRequest>Yeah!</sayHelloRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:9000/MyService/sayHello"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="request" name="sayHello - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MyServiceBinding</con:interface><con:operation>sayHello</con:operation><con:request name="sayHello - Request 1" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9000/services/MyService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sayHelloRequest>1</sayHelloRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:9000/MyService/sayHello"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:loadTest name="LoadTest 1"><con:settings><con:setting id="HttpSettings@close-connections">false</con:setting></con:settings><con:threadCount>2</con:threadCount><con:startDelay>0</con:startDelay><con:sampleInterval>250</con:sampleInterval><con:calculateTPSOnTimePassed>true</con:calculateTPSOnTimePassed><con:resetStatisticsOnThreadCountChange>true</con:resetStatisticsOnThreadCountChange><con:historyLimit>-1</con:historyLimit><con:testLimit>60</con:testLimit><con:limitType>COUNT</con:limitType><con:loadStrategy><con:type>Simple</con:type><con:config><testDelay>500</testDelay><randomFactor>0.5</randomFactor></con:config></con:loadStrategy><con:assertion type="Step Status" name="Step Status"/><con:maxAssertionErrors>100</con:maxAssertionErrors><con:cancelExcessiveThreads>true</con:cancelExcessiveThreads><con:strategyInterval>500</con:strategyInterval></con:loadTest><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/></con:soapui-project>

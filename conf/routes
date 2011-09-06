@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET			/														Application.index
+
+
+# SOAP MyService
+GET			/services/MyService.{wsdl}								Application.wsdl
+POST		/services/MyService										Application.router
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+#Websockets
+WS      /asyncTest                                 WebSocket.asyncMessage
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

@@ -1,0 +1,6 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sayByeRequest>Claw</sayByeRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

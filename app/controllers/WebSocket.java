@@ -1,0 +1,31 @@
+/**
+ * 
+ */
+package controllers;
+
+import org.w3c.dom.Document;
+
+import play.libs.F.EventStream;
+import play.libs.XML;
+import play.mvc.WebSocketController;
+import play.utils.HTML;
+
+/**
+ * @author chamerling
+ * 
+ */
+public class WebSocket extends WebSocketController {
+
+	public static EventStream<Document> liveStream = new EventStream<Document>();
+
+	public static void asyncMessage() {
+		while (inbound.isOpen()) {
+			Document message = await(liveStream.nextEvent());
+			String string = XML.serialize(message);
+			if (string != null) {
+				System.out.println(string);
+				outbound.send(HTML.htmlEscape(string));
+			}
+		}
+	}
+}
