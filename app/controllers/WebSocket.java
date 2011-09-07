@@ -23,7 +23,6 @@ public class WebSocket extends WebSocketController {
 			Document message = await(liveStream.nextEvent());
 			String string = XML.serialize(message);
 			if (string != null) {
-				System.out.println(string);
 				outbound.send(HTML.htmlEscape(string));
 			}
 		}
