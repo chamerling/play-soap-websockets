@@ -1,7 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h2>Messages</h2>
+<br><br>
+<div id="message">
+	<div class="alert-message info">
+		<p>Messages will be displayed as soon as they are pushed by the server...</p>
+	</div>
+</div>
 <div id="socketout"></div>
 
 <script type="text/javascript">
@@ -11,6 +16,7 @@
 
     // Message received on the socket
     socket.onmessage = function(event) {
-        $('#socketout').append('Call ' + i++ + ' : <pre><code>' + event.data + '' + '</code></pre><br><br>');
+        $('#socketout').append('<div class=\"alert-message warning\">Got a new message #' + i++ + ' </div><pre><code>' + event.data + '' + '</code></pre><br><br>');
+        $('#message').remove();
     }
 </script>

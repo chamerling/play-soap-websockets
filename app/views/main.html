@@ -4,13 +4,30 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap-1.2.0.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
-        #{doLayout /}
-    </body>
+    
+    <div class="topbar-wrapper" style="z-index: 5;">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <h3><a href="@@{Application.index}">Web Sockets</a></h3>
+          <ul class="nav">
+            <li class="active"><a href="@@{Application.index}">Home</a></li>
+          </ul>
+        </div>
+      </div><!-- /topbar-inner -->
+    </div><!-- /topbar -->
+  </div>
+  
+  <p><br><br></p>
+  <div class="container">
+     #{doLayout /}
+  </div>
+  </body>
 </html>
