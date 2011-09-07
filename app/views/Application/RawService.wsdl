@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="RawService" targetNamespace="${base}/RawService/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="${base}/RawService/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="${base}/RawService/">
+			<xsd:element name="SayHelloRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SayHelloResponseResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="sayByeRequest">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="sayByeResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="sayHello">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="sayHelloResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="sayHelloRequest">
+		<wsdl:part name="sayHelloRequest" type="xsd:string"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sayHelloResponse">
+		<wsdl:part name="sayHelloResponse" type="xsd:string"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sayByeRequest">
+		<wsdl:part name="sayByeRequest" type="xsd:string"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sayByeResponse">
+		<wsdl:part name="sayByeResponse" type="xsd:string"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="RawServicePortType">
+		<wsdl:operation name="sayHello">
+			<wsdl:input message="tns:sayHelloRequest"></wsdl:input>
+			<wsdl:output message="tns:sayHelloResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sayBye">
+			<wsdl:input message="tns:sayByeRequest"></wsdl:input>
+			<wsdl:output message="tns:sayByeResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RawServiceBinding"
+		type="tns:RawServicePortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="sayHello">
+			<soap:operation soapAction="${base}/RawService/sayHello" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sayBye">
+			<soap:operation soapAction="${base}/RawService/sayBye" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="RawService">
+		<wsdl:port name="RawServicePort" binding="tns:RawServiceBinding">
+			<soap:address location="${location}" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

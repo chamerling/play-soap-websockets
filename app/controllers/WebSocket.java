@@ -16,6 +16,10 @@ import play.utils.HTML;
  */
 public class WebSocket extends WebSocketController {
 
+	/**
+	 * NOTE : This stream is shared between all browsers so messages delivery is not
+	 * guarantee for all...
+	 */
 	public static EventStream<Document> liveStream = new EventStream<Document>();
 
 	public static void asyncMessage() {

@@ -7,9 +7,10 @@ GET			/														Application.index
 
 
 # SOAP MyService
-GET			/services/MyService.{wsdl}								Application.wsdl
-POST		/services/MyService										Application.router
-
+GET			/services/MyService.{wsdl}								MyService.wsdl
+POST		/services/MyService										MyService.router
+GET			/services/RawService.{wsdl}								RawService.wsdl
+POST		/services/RawService									RawService.any
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
