@@ -6,6 +6,7 @@ package models;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 import play.Play;
 import play.db.jpa.Model;
@@ -21,6 +22,7 @@ public class Message extends Model {
 
 	public long date;
 
+	@Lob
 	public String payload;
 
 	public synchronized static void push(Message message) {
