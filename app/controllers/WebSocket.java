@@ -3,6 +3,8 @@
  */
 package controllers;
 
+import models.Message;
+
 import org.w3c.dom.Document;
 
 import play.libs.F.EventStream;
@@ -20,14 +22,13 @@ public class WebSocket extends WebSocketController {
 	 * NOTE : This stream is shared between all browsers so messages delivery is not
 	 * guarantee for all...
 	 */
-	public static EventStream<Document> liveStream = new EventStream<Document>();
+	public static EventStream<Message> liveStream = new EventStream<Message>();
 
 	public static void asyncMessage() {
 		while (inbound.isOpen()) {
-			Document message = await(liveStream.nextEvent());
-			String string = XML.serialize(message);
-			if (string != null) {
-				outbound.send(HTML.htmlEscape(string));
+			Message message = await(liveStream.nextEvent());
+			if (message != null) {
+				outbound.send(HTML.htmlEscape(message.payload));
 			}
 		}
 	}

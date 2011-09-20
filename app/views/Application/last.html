@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+#{if wsmessages}
+    #{list wsmessages, as : 'm'}
+      <a name="${m.date}"></a>
+      <div class="alert-message warning">Received at ${m.date.asdate('dd MMMM yyyy hh:mm:ss')}</div><pre><code>${m.payload}</code></pre><br>
+	#{/list}
+#{/if}

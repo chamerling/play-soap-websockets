@@ -3,6 +3,8 @@
  */
 package controllers;
 
+import models.Message;
+
 import org.w3c.dom.Document;
 
 import play.libs.IO;
@@ -12,13 +14,13 @@ import play.mvc.Controller;
 import play.mvc.Http.StatusCode;
 
 /**
- * Accept anything POX/SOAP/...
+ * Accept anything POX/SOAP/ store and publish messages...
  * 
  * @author chamerling
  * 
  */
 public class RawService extends Controller {
-
+	
 	@Before
 	public static void setup() {
 		// to be injected in ressources
@@ -28,13 +30,17 @@ public class RawService extends Controller {
 	}
 
 	public static void any() {
+		long date = System.currentTimeMillis();
 		String body = IO.readContentAsString(request.body);
-		Document xml = XML.getDocument(body);
-		if (xml == null) {
-			error(StatusCode.INTERNAL_ERROR, "XML is malformed...");
+		if (body == null) {
+			error(StatusCode.INTERNAL_ERROR, "Message is malformed...");
 		}
+		Message message = new Message();
+		message.date = date;
+		message.payload = body;
+		Message.push(message);
 
-		WebSocket.liveStream.publish(xml);
+		WebSocket.liveStream.publish(message);
 		render("Application//RawService_Response.xml");
 	}
 

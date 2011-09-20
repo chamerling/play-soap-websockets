@@ -4,11 +4,11 @@
 
 # Home page
 GET			/														Application.index
+GET			/last													Application.last
+GET			/websocket												Application.websocket
 
 
 # SOAP MyService
-GET			/services/MyService.{wsdl}								MyService.wsdl
-POST		/services/MyService										MyService.router
 GET			/services/RawService.{wsdl}								RawService.wsdl
 POST		/services/RawService									RawService.any
 

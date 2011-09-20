@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'Web Socket' /}
+
+<br><br>
+<div id="message">
+	<div class="alert-message info">
+		<p>Messages will be displayed as soon as they are pushed by the server...</p>
+	</div>
+</div>
+<div id="socketout"></div>
+
+<script type="text/javascript">
+    // Create a socket
+    var socket = new WebSocket('@@{WebSocket.asyncMessage()}')
+    var i = 0
+
+    // Message received on the socket
+    socket.onmessage = function(event) {
+        $('#socketout').append('<div class=\"alert-message warning\">Got a new message #' + i++ + ' </div><pre><code>' + event.data + '' + '</code></pre><br><br>');
+        $('#message').remove();
+    }
+</script>

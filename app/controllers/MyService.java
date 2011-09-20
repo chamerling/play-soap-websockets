@@ -16,11 +16,13 @@ import play.mvc.Http.Header;
 import play.mvc.Http.StatusCode;
 
 /**
+ * A simple Web service implementation
+ * 
  * @author chamerling
  * 
  */
 public class MyService extends Controller {
-	
+
 	@Before
 	public static void setup() {
 		// to be injected in ressources
@@ -56,14 +58,12 @@ public class MyService extends Controller {
 	}
 
 	private static void sayHello(Document xml) {
-		WebSocket.liveStream.publish(xml);
 		String name = XPath.selectText("//sayHelloRequest/text()", xml);
 		name = String.format("Hello %s!", name);
 		render("Application//MyService_SayHelloResponse.xml", name);
 	}
 
 	private static void sayBye(Document xml) {
-		WebSocket.liveStream.publish(xml);
 		String name = XPath.selectText("//sayByeRequest/text()", xml);
 		name = String.format("Bye %s!", name);
 		render("Application//MyService_SayByeResponse.xml", name);
