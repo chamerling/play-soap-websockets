@@ -13,7 +13,7 @@ public class Application extends Controller {
 	public static void setup() {
 		// to be injected in ressources
 		renderArgs.put("base", request.getBase());
-		String location = request.getBase() + "/services/RawService?wsdl";
+		String location = request.getBase() + "/services/RawService.wsdl";
 		renderArgs.put("wsdl", location);
 	}
 
