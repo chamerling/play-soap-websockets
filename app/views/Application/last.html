@@ -5,6 +5,6 @@
 #{if wsmessages}
     #{list wsmessages, as : 'm'}
       <a name="${m.date}"></a>
-      <div class="alert-message warning">Received at ${m.date.asdate('dd MMMM yyyy hh:mm:ss')}</div><pre><code>${m.payload}</code></pre><br>
+      <div class="alert-message info">Received at ${m.date.asdate('dd MMMM yyyy hh:mm:ss')}</div><pre class="prettyprint">${m.payload}</pre><br>
 	#{/list}
 #{/if}

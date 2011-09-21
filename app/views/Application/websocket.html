@@ -16,7 +16,8 @@
 
     // Message received on the socket
     socket.onmessage = function(event) {
-        $('#socketout').append('<div class=\"alert-message warning\">Got a new message #' + i++ + ' </div><pre><code>' + event.data + '' + '</code></pre><br><br>');
+        // must prettify the event.data by calling the javacript before...
+        $('#socketout').append('<div class=\"alert-message info\">Got a new message #' + i++ + ' </div><pre><code>' + event.data + '' + '</code></pre><br><br>');
         $('#message').remove();
     }
 </script>

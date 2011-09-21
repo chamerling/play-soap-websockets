@@ -5,12 +5,14 @@
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap-1.2.0.css'}">
+        <link rel="stylesheet"type="text/css" href="@{'/public/stylesheets/prettify.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/prettify.js'}" type="text/javascript"></script>
         #{get 'moreScripts' /}
     </head>
-    <body>
+    <body onload="prettyPrint()">
     
     <div class="topbar-wrapper" style="z-index: 5;">
     <div class="topbar">
