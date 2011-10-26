@@ -38,7 +38,6 @@ public class RawService extends Controller {
 		Message message = new Message();
 		message.date = date;
 		message.payload = body;
-		Message.push(message);
 
 		WebSocket.liveStream.publish(message);
 		render("Application//RawService_Response.xml");
