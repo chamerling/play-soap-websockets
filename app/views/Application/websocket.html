@@ -12,6 +12,7 @@
 <script type="text/javascript">
     // Create a socket
     var socket = new WebSocket('@@{WebSocket.asyncMessage()}')
+    var startedAt=new Date();
     var i = 1
 
     // Message received on the socket
