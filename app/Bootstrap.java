@@ -13,27 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package models;
+import models.Stats;
+import play.jobs.Job;
+import play.jobs.OnApplicationStart;
+import play.test.Fixtures;
 
 /**
- * @author chamerling
+ * Bootstrap some init data to avoid some useless test for the application long
+ * life time
+ * 
  * 
  */
-public class Topic {
+@OnApplicationStart
+public class Bootstrap extends Job {
 
-	/**
-	 * TOpic name
-	 */
-	String name;
-
-	/**
-	 * Last message received for this topic
-	 */
-	String lastReceived;
-
-	/**
-	 * Total nb of received messages for the current topic
-	 */
-	long nb;
-
+	@Override
+	public void doJob() throws Exception {
+		Stats.get().start();
+	}
 }

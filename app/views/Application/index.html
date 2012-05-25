@@ -6,3 +6,19 @@
 This Play! application displays SOAP messages received on a raw Web service exposed at <a href="${wsdl}">${wsdl}</a>.
 Even if there is a provided WSDL, there is no check on the message type. Messages are stored for <a href="@{Application.last}">static display</a> or directly pushed to clients with the help of <a href="@{Application.websocket}">Web sockets</a>.
 </div>
+
+<div id="stats">Waiting for Stats to be pushed by the server...</div>
+
+<script type="text/javascript">
+    // Create a socket
+    var socket = new WebSocket('@@{StatsWebSocket.asyncMessage()}')
+
+    var nbMessages = 0
+    
+    // Message received on the socket
+    socket.onmessage = function(event) {
+    	$('#stats').text('')
+		var d = $.parseJSON(event.data);
+        $('#stats').html('<div class=\"alert-message info\">' + d.body + '' + ', <b>'+ d.stats.nb +'</b> calls and counting...</div><br><br>'); 
+    }
+</script>
