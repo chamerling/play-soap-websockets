@@ -17,23 +17,23 @@ package models;
 
 /**
  * @author chamerling
- * 
+ *
  */
-public class Topic {
-
+public class StatusMessage {
+	
 	/**
-	 * TOpic name
+	 * Current stats
 	 */
-	String name;
-
+	public Stats stats;
+	
 	/**
-	 * Last message received for this topic
+	 * The core message
 	 */
-	String lastReceived;
-
+	public String body;
+	
 	/**
-	 * Total nb of received messages for the current topic
+	 * The message type
 	 */
-	long nb;
+	public String type;
 
 }
