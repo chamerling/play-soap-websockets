@@ -17,23 +17,37 @@ package models;
 
 /**
  * @author chamerling
- * 
+ *
  */
-public class Topic {
-
+public class Stats {
+	
+	private static Stats instance;
+	
 	/**
-	 * TOpic name
+	 * Dummy...
+	 * 
+	 * @return
 	 */
-	String name;
-
-	/**
-	 * Last message received for this topic
-	 */
-	String lastReceived;
-
-	/**
-	 * Total nb of received messages for the current topic
-	 */
-	long nb;
+	public synchronized static Stats get() {
+		if (instance == null) {
+			instance = new Stats();
+		}
+		return instance;
+	}
+	
+	public long startTime = 0L;
+	
+	public long lastRequest = 0L;
+	
+	public long nb = 0;
+	
+	public void start() {
+		this.startTime = System.currentTimeMillis();
+	}
+	
+	public void request() {
+		lastRequest = System.currentTimeMillis();
+		nb ++;
+	}
 
 }
